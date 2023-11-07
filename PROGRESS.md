@@ -1,6 +1,6 @@
 # Web Scripting
 
-This repository belongs to: **YOUR_NAME_HERE**
+This repository belongs to: **Esteban Desmedt**
 
 When you finished a challenge replace the ❌ with a ✔️.
 
@@ -8,16 +8,16 @@ When you finished a challenge replace the ❌ with a ✔️.
 
 | Finished | Challenge | Difficulty | Description |
 | :---: | --- | --- | --- |
-| ❌ | **SQL script** | Easy | Create a restore SQL script for a table |
-| ❌ | **SQL script** | Easy | Restore and fill table with SQL script |
-| ❌ | **CRUD scripts** | Easy | Perform some crud actions with SQL scripts |
+| ✔️ | **SQL script** | Easy | Create a restore SQL script for a table |
+| ✔️ | **SQL script** | Easy | Restore and fill table with SQL script |
+| ✔️ | **CRUD scripts** | Easy | Perform some crud actions with SQL scripts |
 
 ## Exercise serie 2 - [Express](02_express/README.md)
 
 | Finished | Challenge | Difficulty | Description |
 | :---: | --- | --- | --- |
-| ❌ | **Hello World** | Easy | Build your Express backend |
-| ❌ | **CRUD API simulation** | Easy | Simulate a CRUD api |
+| ✔️ | **Hello World** | Easy | Build your Express backend |
+| ✔️ | **CRUD API simulation** | Easy | Simulate a CRUD api |
 | ❌ | **Parameters** | Easy | Simulate an API with parameters |
 | ❌ | **Directory** | Easy | API for folder content of an URL |
 | ❌ | **GET from database** | Medium | Build an API that gets data from a table |
