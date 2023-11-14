@@ -18,7 +18,7 @@ When you finished a challenge replace the ❌ with a ✔️.
 | :---: | --- | --- | --- |
 | ✔️ | **Hello World** | Easy | Build your Express backend |
 | ✔️ | **CRUD API simulation** | Easy | Simulate a CRUD api |
-| ❌ | **Parameters** | Easy | Simulate an API with parameters |
+| ✔️ | **Parameters** | Easy | Simulate an API with parameters |
 | ❌ | **Directory** | Easy | API for folder content of an URL |
 | ❌ | **GET from database** | Medium | Build an API that gets data from a table |
 
