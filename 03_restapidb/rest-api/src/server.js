@@ -1,7 +1,10 @@
 const express = require('express');
 require('dotenv').config();
+const bodyParser = require('body-parser');
 const app = express();
 const dbUsers = require('../helpers/dbUsers');
+
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
@@ -37,6 +40,18 @@ app.get('/users/:userId', async (req, res) => {
     }
   });
   
+  app.post('/users', async (req, res) => {
+    try {
+      const userData = req.body;
+  
+      const userId = await dbUsers.addUser(userData);
+  
+      res.status(201).json({ userId });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
   
 
 const PORT = 3000;

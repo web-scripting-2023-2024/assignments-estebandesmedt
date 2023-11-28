@@ -32,4 +32,15 @@ async function getUserById(userId) {
   }
 }
 
-module.exports = { getAllUsers, getUserById };
+async function addUser(userData) {
+  try {
+    const connection = await pool.getConnection();
+    const [result] = await connection.query('INSERT INTO users SET ?', [userData]);
+    connection.release();
+    return result.insertId;
+  } catch (error) {
+    throw error;
+  }
+}
+
+module.exports = { getAllUsers, getUserById, addUser };
