@@ -36,7 +36,7 @@ When you finished a challenge replace the ❌ with a ✔️.
 
 | Finished | Challenge | Difficulty | Description |
 | :---: | --- | --- | --- |
-| ❌ | **POST route** | Medium | Use Bootstrap grid |
+| ✔️ | **POST route** | Medium | Use Bootstrap grid |
 | ❌ | **GET route** | Easy | Style a responsive navigation bar |
 | ❌ | **GET route with parameter** | Medium | Bootstrap classes |
 | ❌ | **DELETE route** | Easy | Bootstrap classes |
