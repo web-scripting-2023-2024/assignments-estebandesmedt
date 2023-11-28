@@ -19,20 +19,16 @@ app.get('/usersAll/:user', async (req, res) => {
     }
   });
 
-// Route to handle HTTP GET request to /users/:userId
+
 app.get('/users/:userId', async (req, res) => {
     try {
-      // Retrieve user details based on the userId parameter
       const userId = req.params.userId;
-      // Call method from dbUsers.js to retrieve user details
       const user = await dbUsers.getUserById(userId);
   
-      // Check if the user exists
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
       }
   
-      // Send the user details in the response
       res.json(user);
     } catch (error) {
       console.error(error);

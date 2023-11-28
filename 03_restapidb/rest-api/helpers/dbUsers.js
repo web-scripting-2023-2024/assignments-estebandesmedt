@@ -48,7 +48,7 @@ async function updateUser(userId, userData) {
     const connection = await pool.getConnection();
     const [result] = await connection.query('UPDATE users SET ? WHERE id = ?', [userData, userId]);
     connection.release();
-    return result.affectedRows; // return the number of affected rows
+    return result.affectedRows; 
   } catch (error) {
     throw error;
   }
@@ -59,7 +59,7 @@ async function deleteUser(userId) {
     const connection = await pool.getConnection();
     const [result] = await connection.query('DELETE FROM users WHERE id = ?', [userId]);
     connection.release();
-    return result.affectedRows; // return the number of affected rows
+    return result.affectedRows; 
   } catch (error) {
     throw error;
   }
