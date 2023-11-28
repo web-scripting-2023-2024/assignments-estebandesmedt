@@ -43,4 +43,15 @@ async function addUser(userData) {
   }
 }
 
-module.exports = { getAllUsers, getUserById, addUser };
+async function updateUser(userId, userData) {
+  try {
+    const connection = await pool.getConnection();
+    const [result] = await connection.query('UPDATE users SET ? WHERE id = ?', [userData, userId]);
+    connection.release();
+    return result.affectedRows; // return the number of affected rows
+  } catch (error) {
+    throw error;
+  }
+}
+
+module.exports = { getAllUsers, getUserById, addUser, updateUser };

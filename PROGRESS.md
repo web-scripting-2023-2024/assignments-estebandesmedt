@@ -29,7 +29,7 @@ When you finished a challenge replace the ❌ with a ✔️.
 | ✔️ | **GET route** | Easy | GET all request to database |
 | ✔️ | **GET route with parameter** | Easy | GET specific request to database |
 | ✔️ | **POST route** | Medium | POST new data to database |
-| ❌ | **PUT route** | Medium | PUT updated data to database |
+| ✔️ | **PUT route** | Medium | PUT updated data to database |
 | ❌ | **DELETE route** | Easy | DELETE record from database |
 
 ## Exercise serie 4 - [Rest API Files](04_restapifs/README.md)

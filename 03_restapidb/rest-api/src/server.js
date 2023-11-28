@@ -53,6 +53,23 @@ app.get('/users/:userId', async (req, res) => {
     }
   });
   
+  app.put('/users/:userId', async (req, res) => {
+    try {
+      const userId = req.params.userId;
+  
+      const userData = req.body;
+  
+      const affectedRows = await dbUsers.updateUser(userId, userData);
+  
+      if (affectedRows === 0) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      res.json({ message: 'User updated successfully' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
 
 const PORT = 3000;
 app.listen(PORT, () => {
