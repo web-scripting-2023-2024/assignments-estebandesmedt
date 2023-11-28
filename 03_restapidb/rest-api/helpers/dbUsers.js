@@ -54,4 +54,15 @@ async function updateUser(userId, userData) {
   }
 }
 
-module.exports = { getAllUsers, getUserById, addUser, updateUser };
+async function deleteUser(userId) {
+  try {
+    const connection = await pool.getConnection();
+    const [result] = await connection.query('DELETE FROM users WHERE id = ?', [userId]);
+    connection.release();
+    return result.affectedRows; // return the number of affected rows
+  } catch (error) {
+    throw error;
+  }
+}
+
+module.exports = { getAllUsers, getUserById, addUser, updateUser, deleteUser };

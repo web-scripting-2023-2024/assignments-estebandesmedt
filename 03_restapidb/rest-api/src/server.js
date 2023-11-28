@@ -71,6 +71,22 @@ app.get('/users/:userId', async (req, res) => {
     }
   });
 
+  app.delete('/users/:userId', async (req, res) => {
+    try {
+      const userId = req.params.userId;
+  
+      const affectedRows = await dbUsers.deleteUser(userId);
+  
+      if (affectedRows === 0) {
+        return res.status(404).json({ error: 'User not found' });
+      }
+      res.json({ message: 'User deleted successfully' });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
 const PORT = 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
