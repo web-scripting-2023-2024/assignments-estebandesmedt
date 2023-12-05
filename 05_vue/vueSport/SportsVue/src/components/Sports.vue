@@ -40,11 +40,17 @@
         margin-left: 125px;
     }
     .btn-primary{
-        margin-left: 525px;
+        margin-left: 125px;
+        width: 1000px;
         margin-bottom: 50px;
         background-color: white;
         color: black;
         border: solid black;
+    }
+    .btn-primary:hover{
+        background-color: black;
+        color: white;
+        transform: scale(1.01);
     }
     h5{
         margin-left: 15px;
