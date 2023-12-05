@@ -45,8 +45,8 @@ When you finished a challenge replace the ❌ with a ✔️.
 
 | Finished | Challenge | Difficulty | Description |
 | :---: | --- | --- | --- |
-| ❌ | **Basic Vue** | Easy | Create your first Vue app |
-| ❌ | **Work with data** | Easy | Visualize data in Vue |
+| ✔️ | **Basic Vue** | Easy | Create your first Vue app |
+| ✔️ | **Work with data** | Easy | Visualize data in Vue |
 | ❌ | **Form** | Medium | Forms in Vue |
 
 ## Exercise serie 6 - [Routes](06_routes/README.md)
