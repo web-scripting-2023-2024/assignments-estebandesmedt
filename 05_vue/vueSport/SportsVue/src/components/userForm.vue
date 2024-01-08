@@ -1,55 +1,111 @@
 <template>
+  <div>
     <form @submit.prevent="submitForm">
-      <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" id="title" v-model="title" class="form-control" :class="{ 'is-invalid': titleError }">
-        <div class="invalid-feedback" v-if="titleError">{{ titleError }}</div>
+      <div class="formtitle">
+        <label for="title" class="title">Title</label>
+        <input id="title" type="text" v-model="title" :class="{ 'is-invalid': titleError }">
+        <div v-if="titleError" class="error">{{ titleError }}</div>
       </div>
-  
-      <div class="form-group">
-        <label for="description">Description</label>
-        <textarea id="description" v-model="description" class="form-control" :class="{ 'is-invalid': descriptionError }"></textarea>
-        <div class="invalid-feedback" v-if="descriptionError">{{ descriptionError }}</div>
+
+      <div>
+        <label for="description" class="des">Description</label>
+        <textarea id="description" v-model="description" :class="{ 'is-invalid': descriptionError }"></textarea>
+        <div v-if="descriptionError" class="error">{{ descriptionError }}</div>
       </div>
-  
-      <div class="form-group">
+
+      <div>
         <label for="image">Image</label>
-        <input type="text" id="image" v-model="image" class="form-control">
+        <input id="image" type="file" @change="onFileChange">
       </div>
-  
-      <button type="submit" class="btn btn-primary">Submit</button>
+
+      <button type="submit">Submit</button>
     </form>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        title: '',
-        description: '',
-        image: '',
-        titleError: '',
-        descriptionError: '',
-      };
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      title: '',
+      description: '',
+      image: null,
+      titleError: '',
+      descriptionError: '',
+    };
+  },
+  methods: {
+    submitForm() {
+      this.titleError = this.title.length > 3 ? '' : 'Title must be longer than 3 characters';
+      this.descriptionError = this.description.length >= 100 ? '' : 'Description must contain at least 100 characters';
+
+      if (!this.titleError && !this.descriptionError && this.image) {
+        // Reset form
+        this.$emit('formSubmitted', {
+          title: this.title,
+          description: this.description,
+          image: this.image,
+        });
+        this.title = '';
+        this.description = '';
+        this.image = null;
+      }
     },
-    methods: {
-      submitForm() {
-        this.titleError = this.title.length > 3 ? '' : 'Title must be longer than 3 characters';
-        this.descriptionError = this.description.length >= 100 ? '' : 'Description must contain at least 100 characters';
-  
-        if (!this.titleError && !this.descriptionError) {
-          // Reset form
-          this.title = '';
-          this.description = '';
-          this.image = '';
-        }
-      },
+    onFileChange(e) {
+      this.image = e.target.files[0];
     },
-  };
-  </script>
-  
-  <style scoped>
-    .is-invalid{
-        border: 1px solid red;
-    }
-  </style>
+  },
+};
+</script>
+
+<style scoped>
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  gap: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+input, textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007BFF;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  font-size: 0.8em;
+}
+.formtitle{
+  display: flex;
+}
+.title{
+  margin-right: 70px;
+}
+.des{
+  margin-right: 20px;
+}
+</style>

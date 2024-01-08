@@ -26,4 +26,5 @@
 
 <template>
     <Sports />
+    <userForm @addSport="addSport" @goToSports="goToSports" />
 </template>
