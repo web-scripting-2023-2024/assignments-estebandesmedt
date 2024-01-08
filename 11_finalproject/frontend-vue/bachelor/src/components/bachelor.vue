@@ -72,6 +72,7 @@ export default {
   margin-bottom: 10px;
   margin-right: 20px;
   width: calc(25% - 20px);
+  height: 460px;
 }
 .post p, h3{
   margin: 0px;
@@ -90,8 +91,9 @@ export default {
   width: 1200px;
 }
 .ImageCard{
-  width: 100%;
+  max-width: 100%;
   height: auto;
+  max-height: 100%;
   border-radius: 10px;
   margin-bottom: 10px;
   border: 1px solid black;
