@@ -84,9 +84,7 @@ app.get('/bachelorthesis/:userId', async (req, res) => {
   app.put('/bachelorthesis/:userId', async (req, res) => {
     try {
       const userId = req.params.userId;
-  
       const userData = req.body;
-  
       const affectedRows = await dbUsers.updateUser(userId, userData);
   
       if (affectedRows === 0) {

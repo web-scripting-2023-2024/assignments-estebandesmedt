@@ -15,7 +15,9 @@
 
         <label>Image</label>
         <input type="file" @change="onFileChange" />
-  
+        <img :src="'http://localhost:3000/images/' + post.image" alt="Post image" class="ImageCard">
+        <div v-if="imageError" class="error-message">{{ imageError }}</div>
+
         <label>Year</label>
         <input v-model="post.academic_year" type="text" />
   
@@ -33,11 +35,13 @@
   export default {
     data() {
       return {
+        imageError: '',
         post: {
           title: '',
           description: '',
           student1: '',
           student2: '',
+          image: '',
           academic_year: '',
           company: ''
         }
@@ -49,24 +53,38 @@
     },
     methods: {
       onFileChange(e) {
-        this.post.image = e.target.files[0];
+        const file = e.target.files[0];
+        const maxSize = 2 * 1024 * 1024; // 2MB
+        const validTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+
+        if (file.size > maxSize) {
+          this.imageError = 'Image size should not be more than 2MB.';
+          return;
+        }
+
+        if (!validTypes.includes(file.type)) {
+          this.imageError = 'Invalid file type. Only .png, .jpg and .jpeg are allowed.';
+          return;
+        }
+
+        this.imageError = '';
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        axios.post('http://localhost:3000/upload', formData)
+          .then(response => {
+            console.log(response.data.message);
+            this.post.image = file.name;
+          })
+          .catch(error => {
+            console.error('Error uploading file:', error);
+            this.imageError = 'Error uploading file.';
+          });
       },
       async updatePost() {
-        const formData = new FormData();
-        Object.keys(this.post).forEach(key => {
-          formData.append(key, this.post[key]);
-        });
-
-        await axios.put(
-          `http://localhost:3000/bachelorthesis/${this.$route.params.id}`,
-          formData,
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data'
-            }
-          }
-        );
-        this.$router.push('/');
+        await axios.put(`http://localhost:3000/bachelorthesis/${this.$route.params.id}`, this.post);
+        this.$router.push('/') 
       }
     }
   }
@@ -77,11 +95,11 @@
     flex-direction: column;
     width: 300px;
     margin: 0 auto;
+    margin-top: 30px;
   }
 
   label {
     font-weight: bold;
-    margin-top: 20px;
   }
 
   input {
@@ -103,5 +121,14 @@
 
   button:hover {
     background-color: #155918;
+  }
+
+  .ImageCard{
+    max-width: 80%;
+    height: auto;
+    max-height: 100%;
+    border-radius: 10px;
+    margin: 10px auto 0 auto;
+    border: 1px solid black;
   }
 </style>

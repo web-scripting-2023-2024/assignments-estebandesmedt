@@ -15,7 +15,8 @@
 
         <label>Image</label>
         <input type="file" @change="onFileChange" />
-  
+        <div v-if="imageError" class="error-message">{{ imageError }}</div>
+
         <label>Year</label>
         <input v-model="post.academic_year" type="text" />
   
@@ -32,6 +33,7 @@
   export default {
     data() {
       return {
+        imageError: '',
         post: {
           title: '',
           description: '',
@@ -44,13 +46,28 @@
       };
     },
     async created() {
-      // Fetch the existing data when the component is created
       await this.fetchPostData();
     },
     methods: {
         onFileChange(e) {
-            this.post.image = e.target.files[0];
-        },
+            const file = e.target.files[0];
+            const maxSize = 2 * 1024 * 1024; // 2MB
+            const validTypes = ['image/png', 'image/jpeg', 'image/jpg'];
+
+            if (file.size > maxSize) {
+                this.imageError = 'Image size should not be more than 2MB.';
+                return;
+            }
+
+            if (!validTypes.includes(file.type)) {
+                this.imageError = 'Invalid file type. Only .png, .jpg and .jpeg are allowed.';
+                return;
+            }
+
+            this.imageError = '';
+
+            this.post.image = file;
+            },
       async fetchPostData() {
         try {
           const response = await axios.get(
@@ -62,28 +79,36 @@
         }
       },
       async submitForm() {
-        try {
-            const formData = new FormData();
-            Object.keys(this.post).forEach(key => {
+      if (this.imageError) {
+        return;
+      }
+
+      try {
+        const formData = new FormData();
+        Object.keys(this.post).forEach(key => {
+          if (key === 'image') {
+            formData.append(key, this.post[key], this.post[key].name);
+          } else {
             formData.append(key, this.post[key]);
-            });
+          }
+        });
 
-            await axios.post(
-            `http://localhost:3000/bachelorthesis`,
-            formData,
-            {
-                headers: {
-                'Content-Type': 'multipart/form-data'
-                }
+        await axios.post(
+          `http://localhost:3000/bachelorthesis`,
+          formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data'
             }
-            );
+          }
+        );
 
-            this.$router.push('/');
-        } catch (error) {
-            console.error(error);
-        }
-        }
+        this.$router.push('/');
+      } catch (error) {
+        console.error(error);
+      }
     },
+  },
   };
   </script>
   
