@@ -7,7 +7,7 @@
       <input type="text" v-model="filters.student2" placeholder="Filter by student2">
       <input type="text" v-model="filters.academic_year" placeholder="Filter by academic year">
       <input type="text" v-model="filters.company" placeholder="Filter by company">
-      <button type="submit">Filter</button>
+      <button class="submitBTN" type="submit">Filter</button>
     </form>
 
     <div class="Card-Wrapper">
@@ -51,12 +51,12 @@ export default {
   methods: {
     filterPosts() {
       this.filteredPosts = this.posts.filter(post =>
-        (this.filters.title === '' || post.title.includes(this.filters.title)) &&
-        (this.filters.description === '' || post.description.includes(this.filters.description)) &&
-        (this.filters.student1 === '' || post.student1.includes(this.filters.student1)) &&
-        (this.filters.student2 === '' || post.student2.includes(this.filters.student2)) &&
+        (this.filters.title === '' || post.title.toLowerCase().includes(this.filters.title.toLowerCase())) &&
+        (this.filters.description === '' || post.description.toLowerCase().includes(this.filters.description.toLowerCase())) &&
+        (this.filters.student1 === '' || post.student1.toLowerCase().includes(this.filters.student1.toLowerCase())) &&
+        (this.filters.student2 === '' || post.student2.toLowerCase().includes(this.filters.student2.toLowerCase())) &&
         (this.filters.academic_year === '' || post.academic_year.toString().includes(this.filters.academic_year)) &&
-        (this.filters.company === '' || post.company.includes(this.filters.company))
+        (this.filters.company === '' || post.company.toLowerCase().includes(this.filters.company.toLowerCase()))
       )
     }
   }
@@ -91,6 +91,7 @@ export default {
   width: 1200px;
 }
 .ImageCard{
+  width: 100%;
   max-width: 100%;
   height: auto;
   max-height: 100%;
@@ -101,5 +102,12 @@ export default {
 .CardFoot{
   display: flex;
   justify-content: space-between;
+}
+.submitBTN{
+  background-color: rgb(21, 192, 230);
+  border: 1px solid black;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
 }
 </style>

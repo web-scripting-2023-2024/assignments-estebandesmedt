@@ -122,8 +122,8 @@
           this.academic_yearError = 'Year should only contain numbers.';
         }
 
-        if (this.post.company.length < 5 || this.post.company.length > 10) {
-          this.companyError = 'Company should be between 5 and 10 characters.';
+        if (this.post.company.length < 5 || this.post.company.length > 15) {
+          this.companyError = 'Company should be between 5 and 15 characters.';
         }
 
         if (this.titleError || this.descriptionError || this.academic_yearError || this.imageError || this.student1Error || this.student2Error || this.companyError) {
