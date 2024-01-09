@@ -1,6 +1,6 @@
 <template>
     <div>
-      <form @submit.prevent="updatePost">
+      <form @submit.prevent="submitForm">
         <label>Title</label>
         <input v-model="post.title" type="text" />
   
@@ -21,14 +21,13 @@
   
         <label>Company</label>
         <input v-model="post.company" type="text" />
-  
         <button type="submit">Submit</button>
       </form>
     </div>
   </template>
   
   <script>
-  import axios from 'axios'
+  import axios from 'axios';
   
   export default {
     data() {
@@ -38,40 +37,57 @@
           description: '',
           student1: '',
           student2: '',
+          image: '',
           academic_year: '',
-          company: ''
-        }
-      }
+          company: '',
+        },
+      };
     },
     async created() {
-      const response = await axios.get(`http://localhost:3000/bachelorthesis/${this.$route.params.id}`)
-      this.post = response.data
+      // Fetch the existing data when the component is created
+      await this.fetchPostData();
     },
     methods: {
-      onFileChange(e) {
-        this.post.image = e.target.files[0];
+        onFileChange(e) {
+            this.post.image = e.target.files[0];
+        },
+      async fetchPostData() {
+        try {
+          const response = await axios.get(
+            `http://localhost:3000/bachelorthesis/${this.$route.params.id}`
+          );
+          this.post = response.data;
+        } catch (error) {
+          console.error(error);
+        }
       },
-      async updatePost() {
-        const formData = new FormData();
-        Object.keys(this.post).forEach(key => {
-          formData.append(key, this.post[key]);
-        });
+      async submitForm() {
+        try {
+            const formData = new FormData();
+            Object.keys(this.post).forEach(key => {
+            formData.append(key, this.post[key]);
+            });
 
-        await axios.put(
-          `http://localhost:3000/bachelorthesis/${this.$route.params.id}`,
-          formData,
-          {
-            headers: {
-              'Content-Type': 'multipart/form-data'
+            await axios.post(
+            `http://localhost:3000/bachelorthesis`,
+            formData,
+            {
+                headers: {
+                'Content-Type': 'multipart/form-data'
+                }
             }
-          }
-        );
-        this.$router.push('/');
-      }
-    }
-  }
+            );
+
+            this.$router.push('/');
+        } catch (error) {
+            console.error(error);
+        }
+        }
+    },
+  };
   </script>
-  <style scoped>
+  
+<style scoped>
   form {
     display: flex;
     flex-direction: column;
@@ -105,3 +121,4 @@
     background-color: #155918;
   }
 </style>
+  

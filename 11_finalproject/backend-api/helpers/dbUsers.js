@@ -43,10 +43,14 @@ async function addUser(userData) {
 
 async function updateUser(userId, userData) {
   try {
+    if (Object.keys(userData).length === 0) {
+      throw new Error('No fields to update');
+    }
+
     const connection = await pool.getConnection();
     const [result] = await connection.query('UPDATE Bachelor_tests SET ? WHERE id = ?', [userData, userId]);
     connection.release();
-    return result.affectedRows; 
+    return result.affectedRows;
   } catch (error) {
     throw error;
   }

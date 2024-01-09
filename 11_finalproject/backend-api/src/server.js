@@ -63,9 +63,10 @@ app.get('/bachelorthesis/:userId', async (req, res) => {
     });
   });
   
-  app.post('/bachelorthesis', async (req, res) => {
+  app.post('/bachelorthesis', upload.single('image'), async (req, res) => {
     try {
       const userData = req.body;
+      userData.image = req.file.originalname;
   
       const userId = await dbUsers.addUser(userData);
   

@@ -93,24 +93,27 @@
         this.filteredPosts = this.filteredPosts.filter(post => post.id !== postId);
       })
   } ,
-async addEmptyRecord() {
-  try {
-    const response = await axios.post('http://localhost:3000/bachelorthesis', {
-      id: this.posts.length + 1,
-      title: 'Title',
-      description: 'Description',
-      student1: 'Student 1',
-      student2: 'Student 2',
-      image: 'Image.jpg', 
-      academic_year: 2000,
-      company: 'Company'
-    });
-
-    this.filteredPosts.push(response.data);
-  } catch (error) {
-    console.error('Error adding empty record:', error);
+  addEmptyRecord() {
+    this.$router.push({ name: 'add' });
   }
-}
+// async addEmptyRecord() {
+//   try {
+//     const response = await axios.post('http://localhost:3000/bachelorthesis', {
+//       id: this.posts.length + 1,
+//       title: 'Title',
+//       description: 'Description',
+//       student1: 'Student 1',
+//       student2: 'Student 2',
+//       image: 'Image.jpg', 
+//       academic_year: 2000,
+//       company: 'Company'
+//     });
+
+//     this.filteredPosts.push(response.data);
+//   } catch (error) {
+//     console.error('Error adding empty record:', error);
+//   }
+// }
 
     }
   }
