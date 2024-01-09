@@ -87,12 +87,14 @@
         this.$router.push({ name: 'edit', params: { id: postId } })
       },
       deletePost(postId) {
+  if (window.confirm('Are you sure you want to delete this post?')) {
     axios
       .delete(`http://localhost:3000/bachelorthesis/${postId}`)
       .then(() => {
         this.filteredPosts = this.filteredPosts.filter(post => post.id !== postId);
       })
-  } ,
+  }
+},
       addEmptyRecord() {
         this.$router.push({ name: 'add' });
       }

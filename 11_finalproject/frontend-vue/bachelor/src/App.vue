@@ -14,7 +14,7 @@
     </div>
   </header>
   <br/> 
-  <RouterView />
+    <RouterView />
 </template>
 <style scoped>
 .navbar h1{

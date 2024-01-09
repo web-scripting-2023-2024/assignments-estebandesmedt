@@ -3,15 +3,19 @@
       <form @submit.prevent="updatePost">
         <label>Title</label>
         <input v-model="post.title" type="text" />
+        <div v-if="titleError" class="error-message">{{ titleError }}</div>
   
         <label>Description</label>
         <input v-model="post.description" type="text" />
+        <div v-if="descriptionError" class="error-message">{{ descriptionError }}</div>
   
         <label>Student 1</label>
         <input v-model="post.student1" type="text" />
+        <div v-if="student1Error" class="error-message">{{ student1Error }}</div>
   
         <label>Student 2</label>
         <input v-model="post.student2" type="text" />
+        <div v-if="student2Error" class="error-message">{{ student2Error }}</div>
 
         <label>Image</label>
         <input type="file" @change="onFileChange" />
@@ -20,9 +24,11 @@
 
         <label>Year</label>
         <input v-model="post.academic_year" type="text" />
+        <div v-if="academic_yearError" class="error-message">{{ academic_yearError }}</div>
   
         <label>Company</label>
         <input v-model="post.company" type="text" />
+        <div v-if="companyError" class="error-message">{{ companyError }}</div>
   
         <button type="submit">Submit</button>
       </form>
@@ -36,6 +42,12 @@
     data() {
       return {
         imageError: '',
+        titleError: '',
+        descriptionError: '',
+        student1Error: '',
+        student2Error: '',
+        academic_yearError: '',
+        companyError: '',
         post: {
           title: '',
           description: '',
@@ -83,6 +95,41 @@
           });
       },
       async updatePost() {
+        this.titleError = '';
+        this.descriptionError = '';
+        this.student1Error = '';
+        this.student2Error = '';
+        this.academic_yearError = '';
+        this.companyError = '';
+
+        if (this.post.title.length < 5 || this.post.title.length > 20) {
+          this.titleError = 'Title should be between 5 and 20 characters.';
+        }
+
+        if (this.post.description.length < 15 || this.post.description.length > 500) {
+          this.descriptionError = 'Description should be between 15 and 500 characters.';
+        }
+
+        if (this.post.student1.length < 5 || this.post.student1.length > 15) {
+          this.student1Error = 'Student 1 should be between 5 and 15 characters.';
+        }
+
+        if (this.post.student2.length < 5 || this.post.student2.length > 15) {
+          this.student2Error = 'Student 2 should be between 5 and 15 characters.';
+        }
+
+        if (!/^\d+$/.test(this.post.academic_year)) {
+          this.academic_yearError = 'Year should only contain numbers.';
+        }
+
+        if (this.post.company.length < 5 || this.post.company.length > 10) {
+          this.companyError = 'Company should be between 5 and 10 characters.';
+        }
+
+        if (this.titleError || this.descriptionError || this.academic_yearError || this.imageError || this.student1Error || this.student2Error || this.companyError) {
+          return;
+        }
+
         await axios.put(`http://localhost:3000/bachelorthesis/${this.$route.params.id}`, this.post);
         this.$router.push('/') 
       }
