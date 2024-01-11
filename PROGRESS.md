@@ -69,10 +69,10 @@ When you finished a challenge replace the ❌ with a ✔️.
 
 | Finished | Challenge | Difficulty | Description |
 | :---: | --- | --- | --- |
-| ❌ | **Axios Get** | Easy | Use Axios for a HTTP GET request  |
-| ❌ | **Axios Delete** | Medium | Use Axios for a HTTP DELETE request  |
-| ❌ | **Axios Put** | Hard | Use Axios for a HTTP PUT request  |
-| ❌ | **Axios Post** | Hard | Use Axios for a HTTP POST request  |
+| ✔️ | **Axios Get** | Easy | Use Axios for a HTTP GET request  |
+| ✔️ | **Axios Delete** | Medium | Use Axios for a HTTP DELETE request  |
+| ✔️ | **Axios Put** | Hard | Use Axios for a HTTP PUT request  |
+| ✔️ | **Axios Post** | Hard | Use Axios for a HTTP POST request  |
 
 ## Final Project - [Bachelor thesis](11_finalproject/README.md)
 
