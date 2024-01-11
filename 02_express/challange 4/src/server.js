@@ -12,7 +12,6 @@ app.get('/dir', async (req, res) => {
       return res.status(400).json({ error: 'Missing URL parameter.' });
     }
 
-    // Decode the URL to handle encoded characters
     const decodedDirPath = decodeURIComponent(dirPath.replace(/\+/g, ' '));
 
     const isDirectory = await fs.stat(decodedDirPath).then(stats => stats.isDirectory());
