@@ -61,9 +61,9 @@ When you finished a challenge replace the ❌ with a ✔️.
 
 | Finished | Challenge | Difficulty | Description |
 | :---: | --- | --- | --- |
-| ❌ | **API** | Medium | Learn to use an API in Vue |
-| ❌ | **API with search term** | Medium | Learn to filter an API in VUE |
-| ❌ | **Loading icon** | Easy | Learn to visualize a loading icon |
+| ✔️ | **API** | Medium | Learn to use an API in Vue |
+| ✔️ | **API with search term** | Medium | Learn to filter an API in VUE |
+| ✔️ | **Loading icon** | Easy | Learn to visualize a loading icon |
 
 ## Exercise serie 8 - [Axios](08_axios/README.md)
 
