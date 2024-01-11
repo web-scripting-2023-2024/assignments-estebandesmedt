@@ -47,15 +47,15 @@ When you finished a challenge replace the ❌ with a ✔️.
 | :---: | --- | --- | --- |
 | ✔️ | **Basic Vue** | Easy | Create your first Vue app |
 | ✔️ | **Work with data** | Easy | Visualize data in Vue |
-| ❌ | **Form** | Medium | Forms in Vue |
+| ✔️ | **Form** | Medium | Forms in Vue |
 
 ## Exercise serie 6 - [Routes](06_routes/README.md)
 
 | Finished | Challenge | Difficulty | Description |
 | :---: | --- | --- | --- |
-| ❌ | **Navigation bar** | Easy | Navigation bar in Vue |
-| ❌ | **Routes** | Easy | Routes for navigation in Vue |
-| ❌ | **Views** | Easy | Views in Vue |
+| ✔️ | **Navigation bar** | Easy | Navigation bar in Vue |
+| ✔️ | **Routes** | Easy | Routes for navigation in Vue |
+| ✔️ | **Views** | Easy | Views in Vue |
 
 ## Exercise serie 7 - [Vue API](07_vueapi/README.md)
 
@@ -78,9 +78,9 @@ When you finished a challenge replace the ❌ with a ✔️.
 
 | Finished | Challenge | Difficulty | Description |
 | :---: | --- | --- | --- |
-| ❌ | **Database** | Easy | Create your database |
-| ❌ | **Backend API** | Medium | Create a backend API |
-| ❌ | **Frontend Vue** | Medium | Create a Frontend UI |
+| ✔️ | **Database** | Easy | Create your database |
+| ✔️ | **Backend API** | Medium | Create a backend API |
+| ✔️ | **Frontend Vue** | Medium | Create a Frontend UI |
 | ❌ | **Deploy** | Hard | Deploy to Docker |
 
 
