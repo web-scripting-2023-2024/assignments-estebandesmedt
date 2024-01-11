@@ -81,7 +81,7 @@ When you finished a challenge replace the ❌ with a ✔️.
 | ✔️ | **Database** | Easy | Create your database |
 | ✔️ | **Backend API** | Medium | Create a backend API |
 | ✔️ | **Frontend Vue** | Medium | Create a Frontend UI |
-| ❌ | **Deploy** | Hard | Deploy to Docker |
+| ✔️ | **Deploy** | Hard | Deploy to Docker |
 
 
 
