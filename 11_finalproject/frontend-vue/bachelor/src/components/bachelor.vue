@@ -84,6 +84,12 @@ export default {
   justify-content: center;
   margin-top: 75px;
 }
+.formcl input{
+  margin-right: 10px;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 5px;
+}
 .Card-Wrapper {
   display: flex;
   margin-top: 100px;
